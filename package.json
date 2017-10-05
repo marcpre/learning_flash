@@ -1,0 +1,31 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcpre/learning_flash.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcpre/learning_flash/issues"
+  },
+  "homepage": "https://github.com/marcpre/learning_flash#readme",
+  "dependencies": {
+    "express": "^4.16.1",
+    "express-session": "^1.15.6",
+    "flash": "^1.1.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
