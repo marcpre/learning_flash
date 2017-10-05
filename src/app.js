@@ -7,6 +7,7 @@ const app = express()
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "pug")
 app.use(express.static(path.join(__dirname, "/../public"))) //public folder!
+app.use(flash)
 app.use(session({
     key: 'user_sid',
     secret: 'sessionSecret',
@@ -15,7 +16,8 @@ app.use(session({
 }));
 
 app.get('/', function(req, res) {
-    res.render("index").flash('info', 'Test Flash Message!')
+    res.flash('info', 'Test Flash Message!')
+    res.render("index")
 })
 
 const port = process.env.APP_PORT || 8080
