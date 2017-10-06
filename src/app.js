@@ -2,6 +2,7 @@ const express = require("express")
 const flash = require("flash")
 const session = require("express-session")
 const path = require("path")
+const route = require("./routes/index")
 const app = express()
 
 app.set("views", path.join(__dirname, "views"))
@@ -15,10 +16,8 @@ app.use(session({
     saveUninitialized: false,
 }));
 
-app.get('/', function(req, res) {
-    res.flash('info', 'Test Flash Message!')
-    res.render("index")
-})
+app.use("/", route)
+
 
 const port = process.env.APP_PORT || 8080
 const host = process.env.APP_HOST || "localhost"
