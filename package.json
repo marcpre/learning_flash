@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/marcpre/learning_flash#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.1",
     "express-session": "^1.15.6",
     "flash": "^1.1.0",

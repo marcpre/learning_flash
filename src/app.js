@@ -2,26 +2,29 @@ const express = require("express")
 const flash = require("flash")
 const session = require("express-session")
 const path = require("path")
-const route = require("./routes/index")
+const bodyParser = require("body-parser")
+
 const app = express()
 
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "pug")
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false, }))
 app.use(express.static(path.join(__dirname, "/../public"))) //public folder!
-app.use(flash)
 app.use(session({
     key: 'user_sid',
     secret: 'sessionSecret',
     resave: true,
     saveUninitialized: false,
-}));
+}))
+app.use(flash())
 
-app.use("/", route)
+app.get('/', function (req, res) {
+    req.flash('success', 'Thank you! Your feedback has been submitted.' )
+    res.render('index')
+})
 
-
-const port = process.env.APP_PORT || 8080
-const host = process.env.APP_HOST || "localhost"
-
-app.listen(port, function() {
-    console.log("Listening on " + host + ":" + port)
+const port = 8080
+app.listen(port, function () {
+    console.log("Listening on localhost:" + port)
 })
